@@ -3,10 +3,19 @@
 	var player, boy, floor;
 	var keyboard, up, down, left, right;
 	
+	var audioContext, track, panner
+	var drip
+	
 function preload() {
 	floor = new Sprite("img/floor.png");
 	player = new Sprite("img/boy.png", 64, 64);
 	wall = new Sprite("img/DungeonFloor.jpg");
+
+
+	audioContext = new AudioContext();
+	drip = new Audio("sound/water-drops-daniel_simon.wav");
+	track = audioContext.createMediaElementSource(drip);
+	panner = new PannerNode(audioContext);
 	
 	keyboard = new Keyboard();
 	left = keyboard.createLeftKey();
@@ -34,6 +43,9 @@ function create() {
 		boy.addAnimation('right', [8, 9, 10, 11], 10);
 		boy.addAnimation('forward', [12, 13, 14, 15], 10);
 		boy.addAnimation('still', [0], 1);
+
+		track.connect(panner).connect(audioContext.destination);
+		drip.play();
 }
 
 
@@ -65,6 +77,11 @@ function update() {
 		boy.setVelocityX(velocX);
 		boy.setVelocityY(velocY);
 		game.checkCollision(boy, wall);
-	
+
+		var x = 100 - (boy.getX() / 2);
+		var y = 100 - (boy.getY() / 2);
+		
+		panner.positionX.value = x;
+		panner.positionY.value = y;
 }
 	
