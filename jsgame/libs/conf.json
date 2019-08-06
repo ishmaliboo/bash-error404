@@ -1,0 +1,8 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "exclude": ["src/libs/phaser.js", "src/libs/phaser.min.js"]
+  }
+}
