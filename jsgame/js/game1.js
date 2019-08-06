@@ -37,7 +37,7 @@ function update() {
 			velocX += -100;
 		}
 		
-		else if (right.isDown()) {
+		if (right.isDown()) {
 			direction = 'right'
 			velocX += 100
 		}
@@ -47,7 +47,7 @@ function update() {
 			velocY += -100
 		}
 		
-		else if (down.isDown()) {
+		if (down.isDown()) {
 			direction = 'back'
 			velocY += 100
 		}
