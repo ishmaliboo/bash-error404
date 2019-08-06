@@ -29,7 +29,6 @@ function create() {
 
 
 function update() {
-		direction = 'still';
 		velocY = 0;
 		velocX = 0;
 		if (left.isDown()) {
@@ -52,6 +51,9 @@ function update() {
 			velocY += 100
 		}
 		
+		if (velocY == 0 && velocX == 0){
+			direction = 'still';
+		}
 		boy.playAnimation(direction);
 		boy.setVelocityX(velocX);
 		boy.setVelocityY(velocY);
