@@ -38,29 +38,31 @@ function create() {
 
 
 function update() {
-		direction = 'still';
 		velocY = 0;
 		velocX = 0;
 		if (left.isDown()) {
 			direction = 'left';
-			velocX = -100;
+			velocX += -100;
 		}
 		
-		else if (right.isDown()) {
+		if (right.isDown()) {
 			direction = 'right'
-			velocX = 100
+			velocX += 100
 		}
 		
 		if (up.isDown()) {
 			direction = 'forward'
-			velocY = -100
+			velocY += -100
 		}
 		
-		else if (down.isDown()) {
+		if (down.isDown()) {
 			direction = 'back'
-			velocY = 100
+			velocY += 100
 		}
 		
+		if (velocY == 0 && velocX == 0){
+			direction = 'still';
+		}
 		boy.playAnimation(direction);
 		boy.setVelocityX(velocX);
 		boy.setVelocityY(velocY);
