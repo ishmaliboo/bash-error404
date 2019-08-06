@@ -78,8 +78,8 @@ function update() {
 		boy.setVelocityY(velocY);
 		game.checkCollision(boy, wall);
 
-		var x = 100 - (boy.getX() / 2);
-		var y = 100 - (boy.getY() / 2);
+		var x = 100 - (boy.getX() / 5);
+		var y = 100 - (boy.getY() / 5);
 		
 		panner.positionX.value = x;
 		panner.positionY.value = y;
